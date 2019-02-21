@@ -1,7 +1,7 @@
 <?php
-namespace News
+namespace News;
 
 interface Observer
 {
-    public function update(Weather\WeatherForecast $weather);
+    public function update(\Weather\WeatherForecast $weather);
 }

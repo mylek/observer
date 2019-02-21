@@ -30,14 +30,14 @@ class WeatherForecast implements Observable
         $this->registeredObservers = new \SplObjectStorage();
     }
 
-    public function registerObserver(Observer $observer)
+    public function registerObserver(\News\Observer $observer)
     {
-        $this->registeredObservers.attach($observer);
+        $this->registeredObservers->attach($observer);
     }
 
-    public function unregisterObserver(Observer $observer)
+    public function unregisterObserver(\News\Observer $observer)
     {
-        $this->registeredObservers.remove($observer);
+        $this->registeredObservers->detach($observer);
     }
 
     public function notifyObservrs()
@@ -52,5 +52,6 @@ class WeatherForecast implements Observable
     {
         $this->temperature = $temperature;
         $this->pressure = $pressure;
+        $this->notifyObservrs();
     }
 }
